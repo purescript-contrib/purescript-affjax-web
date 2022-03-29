@@ -1,0 +1,31 @@
+{
+  "name": "purescript-affjax-web",
+  "homepage": "https://github.com/purescript-contrib/purescript-affjax-web",
+  "description": "An asynchronous AJAX library built using Aff that runs on the browser.",
+  "keywords": [
+    "purescript",
+    "ajax"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/purescript-contrib/purescript-affjax-web.git"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "output",
+    "test",
+    "tmp",
+    "bower.json",
+    "gulpfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "purescript-affjax": "main"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "master"
+  }
+}

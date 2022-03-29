@@ -23,7 +23,7 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-affjax": "main"
+    "purescript-affjax": "working-group-purescript-es/purescript-affjax#es-modules-libraries"
   },
   "devDependencies": {
     "purescript-psci-support": "master"

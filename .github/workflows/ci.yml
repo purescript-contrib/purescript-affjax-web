@@ -46,13 +46,22 @@ jobs:
       - name: Install NPM dependencies
         run: npm install
 
-      - name: Build the project
-        run: npm run build
+      # - name: Build the project
+      #   run: npm run build
 
-      - name: Run tests
-        run: npm run test
+      # - name: Run tests
+      #   run: npm run test
 
       - name: Check formatting
         run: |
           npx eslint src
           purs-tidy check src
+
+      - name: Verify Bower & Pulp
+        run: |
+          npm install bower pulp@16.0.0-0
+          npx bower install
+          npx pulp build -- --censor-lib --strict
+          if [ -d "test" ]; then
+            npx pulp test
+          fi

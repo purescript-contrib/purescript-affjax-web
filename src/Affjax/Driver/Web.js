@@ -1,4 +1,4 @@
-export const webDriver = {
+export const driver = {
   newXHR: function () {
     return new XMLHttpRequest();
   },

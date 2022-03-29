@@ -49,3 +49,6 @@ jobs:
 
       - name: Run tests
         run: npm run test
+
+      - name: Check formatting
+        run: purs-tidy check src test

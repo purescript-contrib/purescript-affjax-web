@@ -1,5 +1,5 @@
 { name = "affjax-web"
 , dependencies = [ "affjax" ]
 , packages = ./packages.dhall
-, sources = [ "src/**/*.purs", "test/**/*.purs" ]
+, sources = [ "src/**/*.purs" ]
 }

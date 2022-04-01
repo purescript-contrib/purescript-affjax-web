@@ -1,17 +1,31 @@
-module Affjax.Web where
+module Affjax.Web
+  ( driver
+  , request
+  , get
+  , post
+  , post_
+  , put
+  , put_
+  , delete
+  , delete_
+  , patch
+  , patch_
+  , module Exports
+  ) where
 
 import Prelude
 
-import Affjax (Error, Request, Response, URL, AffjaxDriver)
+import Affjax (Request, defaultRequest, Response, Error(..), printError, URL) as Exports
 import Affjax as AX
+import Affjax (Error, Request, Response, URL, AffjaxDriver)
 import Affjax.RequestBody as RequestBody
 import Affjax.ResponseFormat as ResponseFormat
 import Data.Either (Either)
 import Data.Maybe (Maybe)
 import Effect.Aff (Aff)
 
--- | Provides an Affjax driver that only works on the browser.
--- | Using this in a Node.js environment will cause errors.
+-- | Provides an Affjax driver that only works on Node.js.
+-- | Using this in a browser environment will cause errors.
 foreign import driver :: AffjaxDriver
 
 -- | Makes a `GET` request to the specified URL.

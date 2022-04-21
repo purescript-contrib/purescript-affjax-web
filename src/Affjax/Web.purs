@@ -24,8 +24,8 @@ import Data.Either (Either)
 import Data.Maybe (Maybe)
 import Effect.Aff (Aff)
 
--- | Provides an Affjax driver that only works on Node.js.
--- | Using this in a browser environment will cause errors.
+-- | Provides an Affjax driver that only works in the browser.
+-- | Using this with NodeJS will cause errors.
 foreign import driver :: AffjaxDriver
 
 -- | Makes a `GET` request to the specified URL.

@@ -23,9 +23,9 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-affjax": "main"
+    "purescript-affjax": "^13.0.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "master"
+    "purescript-psci-support": "^6.0.0"
   }
 }

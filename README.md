@@ -25,7 +25,7 @@ The quick start hasn't been written yet (contributions are welcome!). The quick 
 
 1. Module documentation is [published on Pursuit](https://pursuit.purescript.org/packages/purescript-affjax-web).
 2. Written documentation is kept in the [docs directory](./docs).
-3. Usage examples can be found in [the test suite](./test).
+3. Usage examples can be found in [the now removed test suite](https://github.com/purescript-contrib/purescript-affjax-web/tree/3daabd4363c11b72c121537feeb84eeadbd5b93d/test).
 
 If you get stuck, there are several ways to get help:
 

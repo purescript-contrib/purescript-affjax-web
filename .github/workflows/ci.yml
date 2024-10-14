@@ -9,31 +9,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Set up PureScript toolchain
+      - name: Set up a PureScript toolchain
         uses: purescript-contrib/setup-purescript@main
         with:
-          purescript: "unstable"
+          purescript: "latest"
           purs-tidy: "latest"
+          spago: "unstable"
 
       - name: Cache PureScript dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
-          key: ${{ runner.os }}-spago-${{ hashFiles('**/*.dhall') }}
+          key: ${{ runner.os }}-spago-${{ hashFiles('**/spago.lock') }}
           path: |
             .spago
             output
 
       - name: Set up Node toolchain
-        uses: actions/setup-node@v2
-        with:
-          node-version: "12.x"
+        uses: actions/setup-node@v4
 
       - name: Cache NPM dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         env:
           cache-name: cache-node-modules
         with:
@@ -44,25 +42,20 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+
       - name: Install NPM dependencies
         run: npm install
 
-      - name: Build the project
-        run: npm run build
+      - name: Build source
+        run: spago build --censor-stats --strict --ensure-ranges --pedantic-packages
 
       - name: Run tests
-        run: npm run test
-
-      - name: Check formatting
         run: |
-          npx eslint src
-          purs-tidy check src
+          ${{ steps.setup-chrome.outputs.chrome-path }} --version
+          npm run build
+          npx mocha-headless-chrome --file dist/index.html --args disable-web-security --args no-sandbox --timeout 9999999 --executablePath ${{ steps.setup-chrome.outputs.chrome-path }}
 
-      - name: Verify Bower & Pulp
-        run: |
-          npm install bower pulp@16.0.0-0
-          npx bower install
-          npx pulp build -- --censor-lib --strict
-          if [ -d "test" ]; then
-            npx pulp test
-          fi
+      - name: Verify formatting
+        run: purs-tidy check src test

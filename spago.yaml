@@ -1,0 +1,26 @@
+package:
+  name: affjax-web
+  description: An asynchronous AJAX library built using Aff that runs on the browser.
+  publish:
+    license: Apache-2.0
+    version: 2.0.0
+    location:
+      githubOwner: purescript-contrib
+      githubRepo: purescript-affjax-web
+  dependencies:
+    - aff: ">=8.0.0 <9.0.0"
+    - affjax: ">=13.0.0 <14.0.0"
+    - either: ">=6.1.0 <7.0.0"
+    - maybe: ">=6.0.0 <7.0.0"
+    - prelude: ">=6.0.1 <7.0.0"
+  test:
+    main: Test.Main
+    dependencies:
+      - console
+      - effect
+      - exceptions
+      - spec
+      - spec-mocha
+      - transformers
+      - unsafe-coerce
+workspace: {}

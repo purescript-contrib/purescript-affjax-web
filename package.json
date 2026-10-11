@@ -4,7 +4,6 @@
     "build": "oxlint src && spago build --strict"
   },
   "devDependencies": {
-    "oxlint": "1.87.0",
-    "spago": "1.0.4"
+    "oxlint": "1.87.0"
   }
 }
